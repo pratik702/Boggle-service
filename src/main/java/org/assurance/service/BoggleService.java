@@ -23,14 +23,29 @@ public class BoggleService {
      */
     public List<Alphabet> getRandomAlphabets(Integer n){
         setBoardSize(n);
-        String ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         List<Character> selectedAlphabets = new ArrayList<>();
-        for(int i = 0; i < boardSize*boardSize; i++){
-            int index = (int)(ALPHABETS.length() * Math.random());
-            Character c = ALPHABETS.charAt(index);
-            ALPHABETS = ALPHABETS.substring(0,index) + ALPHABETS.substring(index+1, ALPHABETS.length());
-            selectedAlphabets.add(c);
+        String VOWELS = "AEIOU";
+        int vowelsCount = 0;
+
+        // This is to ensure that there are at least 4 vowels every time.
+        while (vowelsCount < 4){
+            vowelsCount = 0;
+            selectedAlphabets = new ArrayList<>();
+            String ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+            for(int i = 0; i < boardSize*boardSize; i++){
+                int index = (int)(ALPHABETS.length() * Math.random());
+                Character c = ALPHABETS.charAt(index);
+                ALPHABETS = ALPHABETS.substring(0,index) + ALPHABETS.substring(index+1, ALPHABETS.length());
+                selectedAlphabets.add(c);
+            }
+            for (Character c : selectedAlphabets){
+                if (VOWELS.indexOf(c) >-1){
+                    vowelsCount +=1;
+                }
+            }
         }
+
 
         // Create a 2D array of selected alphabets
         Character[][] matrix = insertAlphabetsIntoMatrix(selectedAlphabets);
