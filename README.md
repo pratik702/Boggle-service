@@ -14,8 +14,8 @@
 **Provided APIs:**
 
 1. Get list of random alphabets:
-    **http://localhost:8080/boggle-service/alphabetWordList/<n>**
+    **http://localhost:8080/boggle-service/alphabetWordList/4**
     Note: Here <n> is the size of the board. You may use 1,2,3,4,... sizes as per need.
     
 2. Validate a word:
-   **http://localhost:8080/boggle-service/validateWord/<word>**
+   **http://localhost:8080/boggle-service/validateWord/apple**
